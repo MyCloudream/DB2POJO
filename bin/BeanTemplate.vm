@@ -1,0 +1,37 @@
+package com.cloudream.pojo;
+
+import java.io.Serializable;
+
+public class ${classNameUpCase} implements Serializable {
+	private static final long serialVersionUID = 1L;
+	#foreach ($attr in ${attrs})
+private ${attr[0]} ${attr[1]};
+	#end
+public ${classNameUpCase}(){
+		super();
+	}
+	public ${classNameUpCase}(${allargs}){
+	#foreach($attr in ${attrs})
+	this.${attr[1]} = ${attr[1]};
+	#end
+}
+	
+	#foreach ($attr in ${attrs})
+public ${attr[0]} get${attr[2]}() {
+ 		return this.${attr[1]};
+ 	}
+ 	
+	public void set${attr[2]}(${attr[0]} ${attr[1]}){
+		this.${attr[1]} = ${attr[1]};
+	}
+ 	
+ 	#end
+ 	@Override
+ 	public String toString() {
+ 		return "${classNameUpCase} ["
+ 	#foreach($attr in ${attrs})	
+ 	+ "this.${attr[1]}=" + ${attr[1]}
+	#end	;
+ 	}
+ 
+}
